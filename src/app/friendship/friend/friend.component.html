@@ -1,0 +1,111 @@
+<!--This is just a obserable change -->
+<div *ngIf="loading; else content" class="loader-overlay">
+  <div class="loader">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</div>
+
+<ng-template #content >
+<header *ngIf="friendDetails">
+
+  <div class="container">
+
+
+    <div class="profile">
+
+      <div class="profile-image">
+
+        <img src="../../../assets/download.jpg" alt="">
+
+      </div>
+
+      <div class="profile-user-settings">
+
+        <h1 class="profile-user-name">{{getCardHeader(friendDetails)}}</h1>
+
+        <div>
+          <span class="email-box"><p-chip label="{{getstatus(friendDetails)}}"></p-chip></span>
+        </div>
+
+
+        <div class="profile-stats">
+
+        </div>
+
+      </div>
+
+      <div class="temporary-class" style="flex: 1;">
+        <div class="back-button">
+          <p-button icon="pi pi-arrow-left" styleClass="p-button-rounded p-button-success-sm styling-class"
+            (click)="backToFriends()"></p-button>
+        </div>
+        
+        <div class="button-class" *ngIf="friendDetails?.status === null || friendDetails?.status === 'accepted'">
+
+
+          <div>
+            <p-toast></p-toast>
+            <p-confirmDialog #confirmDialog [style]="{width: '31vw'}"></p-confirmDialog>
+            <p-button type="button" styleClass="p-button-sm styling-class" (click)="menu.toggle($event)"
+              icon="pi pi-bars" label=""></p-button>
+
+            <p-slideMenu #menu [model]="items" [popup]="true" [viewportHeight]="94" [menuWidth]="200"></p-slideMenu>
+          </div>
+
+          <div>
+            <p-button *ngIf="friendDetails?.status === null" label="Edit" icon="pi pi-user-edit"
+              styleClass="p-button-sm styling-class" badgeClass="p-badge-danger"
+              class="button-radius m-radd styling-class" (click)="show()"> </p-button>
+          </div>
+
+        </div>
+
+        <div class="button-class"
+          *ngIf="((friendDetails?.inviterUser?.id === userId) && (friendDetails?.status === 'invited'))">
+
+          <p-toast></p-toast>
+          <p-confirmDialog [style]="{width: '31vw'}"></p-confirmDialog>
+          <p-button label="Withdraw" (click)="confirm2(friendDetails.id)" styleClass="p-button-sm styling-class"
+            badgeClass="p-badge-danger" class="button-radius"></p-button>
+        </div>
+
+
+        <div class="button-class"
+          *ngIf="((friendDetails?.inviterUser?.id !== userId) && (friendDetails?.status === 'invited'))">
+          <p-toast></p-toast>
+          <p-confirmDialog [style]="{width: '31vw'}"></p-confirmDialog>
+          <p-button label="Accept Invitation" (click)="confirm1(friendDetails.id)" icon="pi pi-users"
+            styleClass="p-button-sm " badgeClass="p-badge-danger" class="button-radius m-rad"></p-button>
+
+          <p-button (click)="confirm3(friendDetails.id)" icon="pi pi-user-minus" styleClass="p-button-sm block-button"
+            class="button-radius block-button"></p-button>
+
+
+        </div>
+
+        <div class="button-class"
+          *ngIf="((friendDetails?.inviterUser?.id == userId) && (friendDetails?.status === 'rejected'))">
+          <p-toast></p-toast>
+          <p-confirmDialog [style]="{width: '31vw'}"></p-confirmDialog>
+          <p-button label="Resend Invitation" (click)="resend()" icon="pi pi-users"
+            styleClass="p-button-sm styling-class" badgeClass="p-badge-danger" class="button-radius m-rad"></p-button>
+
+        </div>
+
+
+      </div>
+
+    </div>
+  </div>
+
+</header>
+
+<hr class="separator">
+
+<div class="card" *ngIf="friendDetails && (friendDetails?.status === 'rejected')">
+  <p-messages [(value)]="messages" [enableService]="false" [closable]="false"></p-messages>
+</div>
+
+<h2 class="prime-font" *ngIf="friendDetails  && ((friendDetails?.status === 'accepted') || (friendDetails?.status === null))">Outings with
+  {{getCardHeader(friendDetails)}}</h2>
+</ng-template>

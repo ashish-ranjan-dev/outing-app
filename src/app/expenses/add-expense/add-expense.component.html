@@ -1,0 +1,66 @@
+<div class="form-fields">
+
+
+  <span class="p-float-label description">
+    <textarea id="description" rows="2" pInputTextarea [(ngModel)]="description"></textarea>
+    <label class="prime-font" htmlFor="description">Description<span class="asterisk">*</span></label>
+  </span>
+  <span class="p-float-label ">
+    <p-calendar id="date" dateFormat="dd/mm/yy" [(ngModel)]="defaultDate" [showTime]="true" [showSeconds]="true"
+      id="date" name="date" class="styling-input"></p-calendar>
+    <label class="prime-font" htmlFor="date">Date<span class="asterisk">*</span></label>
+
+  </span>
+  <span class="p-float-label multiselect-span">
+    <p-multiSelect [options]="friendDetails" [(ngModel)]="selectedFriends" optionLabel="name"
+      (onChange)="onMultiselectChange()" [disabled]="outingId !== ''"></p-multiSelect>
+    <label for="ms-friendDetails">Friends<span class="asterisk">*</span></label>
+  </span>
+
+
+  <div class="amounts-inside" style="gap: 0px;">
+    <div class="input-share" *ngIf="selectedFriends && selectedFriends.length > 0">
+      <div *ngIf="selectedFriends && selectedFriends.length > 0" class="inside-title">Bearer Amount</div>
+      <span class="p-float-label input-share-input">
+        <input pInputText id="username" [(ngModel)]="currentUserPaid" type="number" />
+      </span>
+
+      <span class="p-float-label input-share-input" *ngFor="let res of selectedFriends">
+        <input pInputText id="username" [(ngModel)]="res.bearerAmount" type="number" />
+      </span>
+    </div>
+ 
+    <div class="input-share width-name" style="gap: 24px;" *ngIf="selectedFriends && selectedFriends.length > 0">
+      <div *ngIf="selectedFriends && selectedFriends.length > 0" class="inside-title">Name</div>
+
+      <div class="input-share-input  height-name">
+     {{currentUserDetails.name}}
+      </div>
+
+    
+      <div  class="input-share-input height-name" *ngFor="let res of selectedFriends">
+        {{res.name}}
+      </div>
+      </div>
+    
+
+
+    <div class="input-share" *ngIf="selectedFriends && selectedFriends.length > 0">
+      <div *ngIf="selectedFriends && selectedFriends.length > 0" class="inside-title">Beneficiary Amount</div>
+      <span class="p-float-label input-share-input">
+        <input pInputText id="username" [(ngModel)]="currentUserShare" type="number" />
+      </span>
+
+      <span class="p-float-label input-share-input" *ngFor="let res of selectedFriends">
+        <input pInputText id="username" [(ngModel)]="res.beneficiaryAmount" type="number" />
+      </span>
+    </div>
+  </div>
+
+
+
+</div>
+<div class="invite-div">
+  <p-button label="Add Expense" pRipple styleClass="p-button-sm" type="submit" class="primary button-allign"
+    (click)="addExpense(outingId)" [disabled]="((!description) || (!selectedFriends))"></p-button>
+</div>

@@ -1,0 +1,26 @@
+
+
+<p-toast></p-toast>
+  <div class="invite">
+    <h2 class="prime-font">Sent Requests</h2>
+    <div>
+    <p-button icon="pi pi-arrow-left" styleClass="p-button-rounded p-button-success-sm styling-class" (click) = "backToFriends()"></p-button>
+  </div>
+  </div>
+  <div *ngIf="loading" class="loader-overlay">
+    <div class="loader">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+  </div>
+  
+<div class="friend-list">
+  <div class="card-socials" *ngFor="let request of sentRequests" (click)="loadFriend(request.id)">
+    <img src="../../../assets/download.jpg">
+    <div class="border">
+      <h2>{{request.inviteeUser?.name}}</h2>
+     
+    </div>
+  </div>
+  </div>
+
+

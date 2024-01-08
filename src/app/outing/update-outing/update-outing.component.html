@@ -1,0 +1,26 @@
+<div class="form-fields">
+    <span class="p-float-label description">
+        <textarea id="description" rows="2" pInputTextarea [(ngModel)]="description"></textarea>
+        <label class="prime-font" htmlFor="description">Description<span class="asterisk">*</span></label>
+      </span>
+      <span class="p-float-label ">
+        <p-calendar id="date" dateFormat="dd/mm/yy" [(ngModel)]="defaultDate" [showTime]="true" [showSeconds]="true"
+          id="date" name="date" class="styling-input"></p-calendar>
+        <label class="prime-font" htmlFor="date">Date<span class="asterisk">*</span></label>
+    
+      </span>
+      <span class="p-float-label outing-name">
+        <input id="outingname" type="text" pInputText [(ngModel)]="outingName">
+        <label class="prime-font" htmlFor="outing-name">Outing Name<span class="asterisk">*</span></label>
+    
+      </span>
+      <span class="p-float-label multiselect-span">
+        <p-multiSelect [options]="friendDetails" [(ngModel)]="selectedFriends" optionLabel="user.name"
+        (onChange)="onMultiselectChange()"></p-multiSelect>
+        <label for="ms-friendDetails">Friends<span class="asterisk">*</span></label>
+      </span>
+</div>
+<div class="outing-div">
+    <p-button label="Update Outing" pRipple styleClass="p-button-sm" type="submit" class="primary button-allign"
+      (click)="updateOuting()" [disabled]="((!description) || (!selectedFriends) || (!outingName))"></p-button>
+  </div>

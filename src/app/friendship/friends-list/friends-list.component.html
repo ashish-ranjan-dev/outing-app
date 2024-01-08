@@ -1,0 +1,29 @@
+<div class="invite">
+  <h2 class="prime-font">Friends</h2>
+  <h2>
+
+    <p-toast></p-toast>
+    <p-button label="Send Invitation" (click)="show()" icon="pi pi-users" styleClass="p-button-sm"
+      badgeClass="p-badge-danger" class="button-radius"></p-button>
+
+    <p-menu #menu [model]="items" [popup]="true"></p-menu>
+    <p-button type="button" styleClass="p-button-sm styling-class" (click)="menu.toggle($event)" icon="pi pi-bars"
+      label=""></p-button>
+  </h2>
+</div>
+
+<div *ngIf="loading" class="loader-overlay">
+  <div class="loader">
+    <p-progressSpinner></p-progressSpinner>
+  </div>
+</div>
+
+<div class="friend-list">
+  <div class="card-socials" *ngFor="let friend of friends" (click)="loadFriend(friend.id)">
+    <img src="../../../assets/download.jpg">
+    <div class="border">
+      <h2>{{getCardHeader(friend)}}</h2>
+
+    </div>
+  </div>
+</div>

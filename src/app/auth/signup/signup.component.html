@@ -1,0 +1,64 @@
+<div class="from-container">
+  <div class="form signup">
+    <div class="title-class">
+      <h1 class="prime-font title-initial remove-padding">O</h1>
+      <h1 class="prime-font remove-padding">uting</h1>
+    </div>
+    <form #signupForm="ngForm" (ngSubmit)="confirmSignin()">
+      <div class="form-fields">
+
+        <span class="p-float-label">
+          <input #username="ngModel" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
+            required="true" type="text" name="username" pInputText id="username" [(ngModel)]="signupDto.username!" />
+          <label class="prime-font" htmlFor="username">Username<span class="asterisk">*</span></label>
+
+        </span>
+
+        <span class="p-float-label">
+          <input #username="ngModel" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
+            required="true" type="text" name="email" pInputText id="email" [(ngModel)]="signupDto.email!" />
+          <label class="prime-font" htmlFor="email">Email<span class="asterisk">*</span></label>
+
+        </span>
+
+        <span class="p-float-label">
+          <input #username="ngModel" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
+            required="true" type="text" name="name" pInputText id="name" [(ngModel)]="signupDto.name!" />
+          <label class="prime-font" htmlFor="name">Name<span class="asterisk">*</span></label>
+
+        </span>
+
+        <span class="p-float-label">
+          <input #password="ngModel" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
+            required="true" type="password" name="password" pInputText id="password" [(ngModel)]="signupDto.password!"
+            minlength="8" pTooltip="Password must have:
+            - At least one lowercase letter
+            - At least one uppercase letter
+            - At least one numeric digit
+            - Minimum 8 characters" tooltipEvent="focus" />
+          <label class="prime-font" htmlFor="password">Password<span class="asterisk">*</span></label>
+        </span>
+
+        <span class="p-float-label">
+          <input #password="ngModel" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');"
+            required="true" type="password" name="confirmPassword" pInputText id="confirmPassword"
+            [(ngModel)]="signupDto.confirmPassword!" />
+          <label class="prime-font" htmlFor="confirmPassword">Confirm Password<span class="asterisk">*</span></label>
+
+        </span>
+
+
+      </div>
+      <div class="signup-form-btns">
+
+        <p-button (click)="goToSignInPage()" label="Cancel" pRipple
+          styleClass="p-button-outlined p-button-sm"></p-button>
+
+        <p-button [disabled]="signupForm.form.invalid" label="Sign Up" pRipple styleClass="p-button-sm"
+          type="submit"></p-button>
+
+      </div>
+    </form>
+  </div>
+</div>
+<p-confirmDialog [style]="{width: '31vw'}"></p-confirmDialog>

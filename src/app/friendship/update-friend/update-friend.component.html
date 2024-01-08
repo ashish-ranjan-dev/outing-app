@@ -1,0 +1,12 @@
+
+ 
+<div class="form-fields">
+  <span class="p-float-label">
+    <input [(ngModel)]="email"  autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" required="true" type="email" name="email" pInputText id="email"  />
+    <label class="prime-font" htmlFor="email">Email<span class="asterisk">*</span></label>     
+  </span>
+ 
+</div>   
+  <div class="invite-div">
+  <p-button label="Update and Send Invite" pRipple  styleClass="p-button-sm" type="submit" class="primary button-allign" [disabled]="!(email)" (click)="updatefriend(email)"></p-button>
+</div>

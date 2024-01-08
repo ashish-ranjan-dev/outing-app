@@ -1,0 +1,75 @@
+<div *ngIf="loading; else content" class="loader-overlay">
+    <div class="loader">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</div>
+
+<ng-template #content>
+    <div class="container">
+
+
+        <div class="profile">
+
+            <div class="profile-image">
+
+                <img src="../../../assets/outing.jpg" alt="">
+
+            </div>
+
+            <div class="profile-user-settings">
+
+                <h1 class="profile-user-name">{{getCardHeader(outing)}}</h1>
+
+                <div>
+                    <span class="email-box"><p-chip label="{{getDescription(outing)}}"></p-chip></span>
+                </div>
+                <div class="profile-stats friendlist" style="
+                padding-left: 40px; margin-top:14px" >
+                    <!-- <span *ngFor="let bodyItem of outing.outingDetails; let last = last" style="margin-left:2px">
+    
+                        <p-tag class="tag-with-icon mail-box"  tooltipPosition="top"
+                          placeholder="Top" [rounded]="true" 
+                          >{{ bodyItem.user.name}}</p-tag>
+                        <ng-container *ngIf="!last"> </ng-container> </span> -->
+                        <span *ngFor="let bodyItem of outing.outingDetails; let last = last">
+                            <p-tag class="tag-with-icon mail-box" value="{{bodyItem.user.name}}" severity="success" pTooltip="Acknowledged" tooltipPosition="top"
+                              placeholder="Top" [rounded]="true" *ngIf="bodyItem.status=== 'accepted'"></p-tag>
+                            <p-tag class="tag-with-icon mail-box" value="{{bodyItem.user.name}}" severity="danger" pTooltip="Rejected" tooltipPosition="top"
+                              placeholder="Top" [rounded]="true" *ngIf="bodyItem.status=== 'rejected' && userId !== bodyItem.user.id"></p-tag>
+                              <p-tag  class="tag-with-icon" severity="danger" pTooltip="Rejected" tooltipPosition="top"
+                              placeholder="Top" [rounded]="true" *ngIf="bodyItem.status=== 'rejected' && userId === bodyItem.user.id">{{bodyItem.user.name}}</p-tag>
+                            <p-tag class="tag-with-icon mail-box" class="tag-with-icon" severity="info" pTooltip="Un-Acknowledged" tooltipPosition="top"
+                              placeholder="Top" [rounded]="true" *ngIf=" bodyItem.status==='invited' && userId === bodyItem.user.id"
+                              >{{ bodyItem.user.name}}</p-tag>
+                            <p-tag class="tag-with-icon mail-box" value="{{ bodyItem.user.name}}" severity="warning" pTooltip="Un-Acknowledged" tooltipPosition="top"
+                              placeholder="Top" [rounded]="true"
+                              *ngIf=" bodyItem.status==='invited' && userId !== bodyItem.user.id"></p-tag>
+                            <ng-container *ngIf="!last"> </ng-container> </span>
+                </div>
+            </div>
+            <div class="temporary-class" style="flex: 1;">
+                <div class="back-button">
+                    <p-button icon="pi pi-arrow-left" styleClass="p-button-rounded p-button-success-sm styling-class"
+                        (click)="backToFriends()"></p-button>
+                </div>
+
+                <!-- <div class="button-class">
+
+
+                    <div>
+                        <p-toast></p-toast>
+                        <p-confirmDialog #confirmDialog [style]="{width: '31vw'}"></p-confirmDialog>
+                        <p-button type="button" styleClass="p-button-sm styling-class" icon="pi pi-bars"
+                            label=""></p-button>
+
+                        <p-slideMenu #menu [model]="items" [popup]="true" [viewportHeight]="94" [menuWidth]="200"></p-slideMenu>
+                    </div>
+
+                </div> -->
+            </div>
+
+        </div>
+    </div>
+    <hr class="separator">
+    <app-expenses [outingInExpense]="1" [outingId]="outingId" [outingFriends]="outingFriends"></app-expenses>
+</ng-template>

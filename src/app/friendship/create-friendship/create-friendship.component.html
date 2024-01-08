@@ -1,0 +1,14 @@
+
+<div class="form-fields">
+    <span class="p-float-label">
+      <input [(ngModel)]="email"  autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" required="true" type="email" name="email" pInputText id="email"  />
+      <label class="prime-font" htmlFor="email">Email</label>     
+    </span>
+    <span class="p-float-label">
+      <input [(ngModel)]="name"  autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" required="true" type="name" name="name" pInputText id="name"  />
+      <label class="prime-font" htmlFor="name">Name</label>     
+    </span>
+</div>   
+    <div class="invite-div">
+    <p-button label="Invite" pRipple  styleClass="p-button-sm" type="submit" class="primary button-allign" [disabled]="!(email || name)" (click)="sendInvite(email, name)"></p-button>
+  </div>

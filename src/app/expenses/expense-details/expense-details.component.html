@@ -1,0 +1,44 @@
+<div class="form-fields">
+
+  <div class="header">
+    <span class="p-float-label description">
+
+
+      <span class="description">{{currentExpense.description}}</span>
+    </span>
+    <span class="p-float-label ">
+
+      <span class="date">{{beautifyDate}}</span>
+    </span>
+  </div>
+
+  <div class="amounts-inside" style="gap: 0px;">
+    <div class="input-share">
+      <div class="inside-title">Bearer Amount</div>
+
+
+      <div class=" input-share-input" *ngFor="let res of currentExpense.expenseDetails">
+
+       {{res.bearerAmount}}
+      </div>
+    </div>
+ 
+     <div class="input-share"> 
+      <div class="inside-title">Name</div>
+         <span class=" input-share-input" *ngFor="let res of currentExpense.expenseDetails">{{res.name}}</span>
+     </div>
+
+    <div class="input-share">
+      <div class="inside-title">Beneficiary Amount</div>
+
+
+      <span  class=" input-share-input" *ngFor="let res of currentExpense.expenseDetails">
+
+        {{res.beneficiaryAmount}}
+      </span>
+    </div>
+  </div>
+
+
+
+</div>

@@ -1,0 +1,76 @@
+<p-toast></p-toast>
+
+<div class="body">
+
+  <div *ngIf="this.authService.isUserLoggedIn" class="header">
+    <div class="title-class">
+      <h1 class="prime-font title-initial">O</h1>
+      <h1 class="prime-font">uting</h1>
+    </div>
+
+    <div class="nav-links">
+
+      <div class="desktop-nav">
+        <p-menubar [style]="{ width: '100%' }">
+          <ng-template ngFor let-item [ngForOf]="menuItems">
+            <a [routerLink]="item.routerLink" [routerLinkActive]="'active'">
+              <i class="pi {{ item.icon }}"></i>
+              {{ item.label }}
+            </a>
+          </ng-template>
+        </p-menubar>
+      </div>
+
+
+
+
+      <button pButton type="button" label="Menu" icon="pi pi-bars"
+        class="mobile-menu-button p-button-rounded p-button-sm" (click)="toggleMobileMenu($event)"></button>
+      <p-overlayPanel #mobileMenu appendTo="body">
+        <ng-template class="menu-class" pTemplate="content">
+          <div *ngFor="let item of menuItems" [routerLinkActive]="'active'" class="crumb-menu">
+            <a [routerLink]="item.routerLink" (click)="closeMobileMenu()">
+              <i class="pi {{ item.icon }}"></i>
+              {{ item.label }}
+            </a>
+          </div>
+        </ng-template>
+      </p-overlayPanel>
+
+
+    </div>
+    <div>
+      <p-button icon="pi pi-user" styleClass="p-button-rounded p-button-sm styling-class"
+        (click)="op.toggle($event)"></p-button>
+    </div>
+  </div>
+  <div class="router-outlet">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+
+
+
+<p-overlayPanel #op>
+  <!-- <ng-template pTemplate="content"> -->
+    <!-- <div class="user-card"> -->
+      <ng-template class="menu-class" pTemplate="content">
+      <div class="crumb-menu">
+        <i class="pi pi-user"></i>
+        {{this.userProfile?.username!}}
+      </div>
+      <div class="crumb-menu">
+        <i class="pi pi-envelope"></i>
+        {{this.userProfile?.email!}}
+      </div>
+      <div class="crumb-menu text-alg">
+      <p-button  id = "signout" (onClick)="signOutClicked(op)" pRipple styleClass="p-button-outlined p-button-sm signout-button" >
+        <i class="pi pi-sign-out i-margin i-padding"></i>
+        Sign Out
+      </p-button>
+    </div>
+    <!-- </div> -->
+  </ng-template>
+  <!-- </ng-template> -->
+</p-overlayPanel>

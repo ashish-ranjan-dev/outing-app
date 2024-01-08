@@ -1,0 +1,27 @@
+.signup-form-btns{
+  display: flex;
+  justify-content: space-between;
+  // padding-top: 10px;
+}
+
+
+.p-float-label label{
+  font-size: 13.5px;
+}
+
+.form-fields input {
+  width: 298.67px;
+}
+
+.form-fields{
+  gap: 24px !important;
+  padding-bottom: 24px;
+}
+::ng-deep .tooltip-inner {
+  background-color:#ffffff!important
+}
+
+.remove-padding{
+  margin-top: 0px;
+  padding-top:0px;
+}

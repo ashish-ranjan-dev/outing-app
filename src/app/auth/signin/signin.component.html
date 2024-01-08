@@ -1,0 +1,36 @@
+<div class="from-container">
+  <div class="form signin">
+    <div class="title-class">
+      <h1 class="prime-font title-initial remove-padding">O</h1>
+      <h1 class="prime-font remove-padding">uting</h1>
+    </div>
+    <form #signinForm="ngForm" (ngSubmit)="signinUser()">
+      <div class="form-fields">
+      
+       <span class="p-float-label">
+        <input #username="ngModel" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" required="true" type="text" name="username" pInputText id="username" [(ngModel)]="signingInUser.username!" />
+        <label class="prime-font" htmlFor="username">Username<span class="asterisk">*</span></label>  
+      </span>
+         
+      <span class="p-float-label">
+        <input #password="ngModel" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');" required="true" type="password" name="password" pInputText id="password" [(ngModel)]="signingInUser.password!" />
+        <label class="prime-font" htmlFor="password">Password<span class="asterisk">*</span></label> 
+      </span>
+    
+      </div>
+
+      <p-button [disabled]="signinForm.form.invalid" label="Sign In" pRipple styleClass="p-button-sm"
+                type="submit" class="margin-right"></p-button>
+      <div class="login-form-context-links">
+        <div class="context-field">
+          <span class="spacing-xss">Don't have an account?</span>
+          <p-button label="Sign Up" styleClass="p-button-sm p-button-text" (click)="gotToSignup()"></p-button>
+        </div>
+        <div class="context-field">
+          <p-button label="Forgot Password" styleClass="p-button-sm p-button-text"  (click)="gotToForgotPassword()"></p-button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+

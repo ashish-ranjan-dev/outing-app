@@ -1,0 +1,163 @@
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  text-align: left;
+  background: #fdfcfc;
+  transition: box-shadow 0.2s;
+  border: solid #d1e7c9;
+  border-width: 0 0 1px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  padding: 0 15px;
+  height: 80.666667px;
+}
+
+.app-title {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.router-outlet {
+  flex: 1;
+  padding: 15px;
+  }
+
+
+.user-card{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.i-margin{
+  padding: 0.1rem 0rem;
+    font-size: 13px;
+    padding-right: 0.4rem;
+}
+
+#signout.p-button-outlined{
+  padding: 0.4rem;
+  font-size: 13px;
+}
+
+.text-alg{
+  text-align: right;
+}
+
+
+
+
+
+//------------------
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title-class {
+  display: flex;
+  align-items: center;
+}
+
+.active {
+  background: #ebebeb;
+  transition: box-shadow 0.2s;
+  border-radius: 3px;
+}
+
+.crumb-menu{
+  
+  padding: 7px;
+
+}
+
+
+.desktop-nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.mobile-menu-button {
+  display: none;
+}
+
+.mobile-menu {
+  display: none !important;
+}
+.nav-links{
+  flex: 1;
+    border: none;
+    padding: 1rem;
+    padding-right: 0px;
+
+}
+
+.menu-class{
+  display: flex;
+  flex: column;
+}
+
+:host ::ng-deep .p-overlaypanel .p-overlaypanel-content {
+  padding: 2rem !important; 
+}
+
+:host{ ::ng-deep{ 
+  
+  .styling-class{
+  background-color: white;
+  color: #4CAF50;
+}
+
+}}
+
+a{
+  color: #495057;
+  padding: 7px;
+  margin-right: 9px;
+  text-decoration: none;
+}
+@media (max-width: 960px)  {
+  /* Styles for mobile view */
+  
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-menu-button {
+    display: block;
+    margin-right: 10px;
+  }
+
+  .mobile-menu {
+    display: block;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 150px;
+  }
+
+  .nav-links{
+        display: flex;
+        justify-content: right;
+        flex: 1;
+        
+  }
+  .p-tieredmenu {
+    border:0; 
+  }
+}
+
+.police{
+  width: 7rem;
+}
+

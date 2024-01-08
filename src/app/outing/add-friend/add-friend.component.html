@@ -1,0 +1,11 @@
+<div class="form-fields">
+      <span class="p-float-label multiselect-span">
+        <p-multiSelect [options]="friendDetails" [(ngModel)]="selectedFriends" optionLabel="name"
+        (onChange)="onMultiselectChange()"></p-multiSelect>
+        <label for="ms-friendDetails">Friends<span class="asterisk">*</span></label>
+      </span>
+</div>
+<div class="outing-div">
+    <p-button label="Update Outing" pRipple styleClass="p-button-sm" type="submit" class="primary button-allign"
+      (click)="updateFriendsInOuting()" [disabled]="(!selectedFriends)"></p-button>
+  </div>
