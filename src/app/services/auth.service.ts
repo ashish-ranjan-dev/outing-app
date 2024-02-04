@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   resetPassword(userId: string, resetId: string, resetPasswordDto: ResetPasswordDto): Observable<Object> {
-    return this.httpClient.post<Object>(`${environment.apiAuthUrl}/reset-password/user/{userId}/reset/{resetId}`, resetPasswordDto,{headers:HEADERS});
+    return this.httpClient.post<Object>(`${environment.apiAuthUrl}/reset-password/user/${userId}/reset/${resetId}`, resetPasswordDto,{headers:HEADERS});
   }
 
   setCookie(token: string) {
@@ -70,7 +70,7 @@ export class AuthService {
   }
 
   isNotLoggedInOrElseNavigateToHome() {
-    if (!this.isLoggedIn()) {      
+    if (!this.isLoggedIn()) {
       return true;
     }
     this.router.navigate(['']);
